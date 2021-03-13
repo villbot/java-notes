@@ -1,7 +1,4 @@
-# 分布式理论：BASE 理论 
-[[分布式架构概念、发展问题]]
-[[分布式理论：一致性]][[分布式理论：CAP定理]]
-
+# 分布式BASE 理论 
 > BASE理论全称:**Basically Available(基本可用)**，**Soft state(软状态)**,和 **Eventually consistent(最终一致性)**三个短语的缩写，来自 ebay 的架构师提出。   
 >   
 > BASE是对CAP中一致性和可用性权衡的结果  
