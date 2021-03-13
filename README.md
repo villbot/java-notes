@@ -12,26 +12,22 @@
 >   
 > **转载须知：** 如果你需要转载本文档的一些文章，记得注明原文地址就可以了，如发现恶意抄袭/搬运，会动用法律武器维护自己的权益。让我们一起维护一个良好的技术创作环境！
 
+****
 # web容器篇
-
 ## Tomcat
   1. **[Apache Tomcat](docs/web%20container/Apache%20Tomcat.md)**
   2. **[手写实现Tomcat，简易版Tomcat -  TinyCat](https://github.com/elgchat/TinyCat)**
 
+****
 # 分布式篇
-
 ## 分布式理论
-  * **[分布式架构概念、发展问题](docs/distributed/分布式架构概念、发展问题.md)**
-  * **[一致性理论](docs/distributed/一致性理论.md)**
-  * **[一致性协议2PC](docs/distributed/一致性协议2PC.md)**
-  * **[一致性协议3PC](docs/distributed/一致性协议3PC.md)**
-  * **[分布式事务](docs/distributed/分布式事务.md)**
+
  
 ## CAP定理
-  **[CAP定理](docs/distributed/分布式CAP定理.md)**
+  **[简述CAP定理](docs/distributed/分布式CAP定理.md)**
 
 ## BASE理论
-  **[BASE理论](docs/distributed/分布式BASE理论.md)**
+  **[简述BASE理论](docs/distributed/分布式BASE理论.md)**
 
 ## 一致性算法Paxos和Raft 
   * **[一致性算法Paxos](docs/distributed/一致性算法Paxos.md)**
