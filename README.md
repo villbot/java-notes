@@ -1,3 +1,5 @@
+![](assets/1B61E8B8-8862-4EC7-AA02-BDEEA16F666D.png)
+
 # 关于Elgcaht
 
 > **关于命名：** Elgchat取自于Earnestly、Learn、Guide、Chat，本意想梳理一份可以认真学习，互相交流的指南文档。
