@@ -1,23 +1,22 @@
-# Apache Tomcat
 ## 浅谈Http与Tomcat关系
-提及Tomcat自然会想到http请求，那么http请求的处理过程是什c么样的？
+提及Tomcat自然会想到http请求，那么http请求的处理过程是什么样的？
 
 ![](Apache%20Tomcat/73E87451-295C-4EC1-82AF-09116C6F0AA6.png)
 
 1. 用户请求某个URL资源
 2. 浏览器/客户端监听到用户操作，解析请求域名，检索DNS（浏览器DNS -> 系统DNS -> 路由DNS ->  ISP（互联网服务提供商） DNS缓存，除ISP其他的位置检索到DNS，需要验证是否过期，过期会向后位继续查询 )，查询服务器具体IP地址
-3. 浏览器会根据查询到的ip地址进行TCP/IP连接  [[TCP连接/tcp三次握手]]
-4. 连接建立成功后浏览器会生成HTTP格式的数据包使用TCP进行传输 [[HTTP详解]]
+3. 浏览器会根据查询到的ip地址进行TCP/IP连接
+4. 连接建立成功后浏览器会生成HTTP格式的数据包使用TCP进行传输
 5. 服务器接收到TCP请求并解析HTTP格式的数据包
 6. 服务器根据解析后HTTP格式的数据包执行业务请求
 7. 服务器执行业务请求后生成HTTP格式的数据包并使用TCP进行传输
-8. 浏览器接收到TCP连接传输的HTTP格式的数据包解析，并关闭TCP连接  [[TCP连接/tcp四次挥手]]
+8. 浏览器接收到TCP连接传输的HTTP格式的数据包解析，并关闭TCP连接
 9. 浏览器根据解析后的HTTP格式数据进行渲染页面
 
 **浏览器服务服务器使用的是http协议（应用层协议），用于定义数据通信的格式，但具体传输使用[[TCP连接]]协议**
 
 ## Tomcat处理流程
-根据[[Apache Tomcat/浅谈Http与Tomcat关系]] 中描述的http与Tomcat关系可以得出结论，Tomcat是一个http服务器（能够接收并处理http请求）
+因此可以得出结论，Tomcat是一个http服务器（能够接收并处理http请求）
 
 那么Tomcat是怎么样实现与业务代码进行交互的呢？
 
@@ -29,18 +28,16 @@
 4. 根据找到相应的Servlet，并且调用具体的实现方法，处理完成后将返回的信息用servletResponse进行封装
 5. HTTP服务器会将Servlet容器返回的ServletResponse转为Response返回给客户端（浏览器）
 
-
 ## Tomcat核心组件
-通过[[Apache Tomcat/Tomcat处理流程]]中可以发现Tomcat完成了两个重要的功能
-	1. 和客户端进行交互，进行socket通信，并将request和response对象进行封装转换
-	2. Servlet容器逻辑处理
+可以发现Tomcat完成了两个重要的功能
+1. 和客户端进行交互，进行socket通信，并将request和response对象进行封装转换
+2. Servlet容器逻辑处理
 
 那么Tomcat是如何实现这两个重要功能？
 
 Tomcat设计了两个核心组件
-	1. 连接器组件（Coyote）：负责对外交流，处理socket连接，负责网络字节流与request、Response对象的转换。
-	2. 容器组件（Catalina ）：负责内部处理，加载和管理servlet，以及具体处理request请求
-
+1. 连接器组件（Coyote）：负责对外交流，处理socket连接，负责网络字节流与request、Response对象的转换。
+2. 容器组件（Catalina ）：负责内部处理，加载和管理servlet，以及具体处理request请求
 
 ### Tomcat 模块分层图
 
@@ -51,26 +48,23 @@ Jasper 模块提供 JSP 引 擎，Naming 提供JNDI 服务，Juli 提供日志�
 
 根据上图Tomcat模块分层图很直观能看到coyote 和Catalina是比较关键组件，那么下面我们具体来分析这个几个组件之间的关系
 
-
 ### 连接器组件（Coyote）
-
- 顾名思义，连接器组件的职责就是服务器建立连接，发送请求并接受响应
+顾名思义，连接器组件的职责就是服务器建立连接，发送请求并接受响应
 
 ![](Apache%20Tomcat/396A7420-42BC-43A8-B6B8-B7D331F811C8.png)
 
 如上图所示，Coyote（连接器组件）与容器（Catalina）之间交互，
 
-	1. Coyote封装了底层网络通信（socket请求及响应处理）
-	2. Coyote使Catalina容器与具体请求协议及IO操作完全解耦
-	3. coyote将socket输入封装为request对象，进一步封装后交由Catalina容器进行处理，处理完成后，Catalina通过coyote提供的response对象结果写入输出流
-	4. coyote是具体协议（应用层）和IO（传输层）相关内容
+1. Coyote封装了底层网络通信（socket请求及响应处理）
+2. Coyote使Catalina容器与具体请求协议及IO操作完全解耦
+3. coyote将socket输入封装为request对象，进一步封装后交由Catalina容器进行处理，处理完成后，Catalina通过coyote提供的response对象结果写入输出流
+4. coyote是具体协议（应用层）和IO（传输层）相关内容
 
 #### Tomcat Coyote 支持的IO模型与协议
 
 ![](Apache%20Tomcat/page6image30771856.png) 
 
 在 8.0 之前 ，Tomcat 默认采用的I/O方式为 BIO，之后改为 NIO。 无论 NIO、NIO2 还是 APR， 在性 能方面均优于以往的BIO。 如果采用APR， 甚至可以达到 Apache HTTP Server 的响应性能。 
-
 
 #### Tomcat Coyote 的内部组件及流程
 
@@ -85,7 +79,6 @@ Jasper 模块提供 JSP 引 擎，Naming 提供JNDI 服务，Juli 提供日志�
 * **Adapter：**
 	由于协议不同，客户端发过来的请求信息也不尽相同，Tomcat定义了自己的 Request类来封装这些请求信息。ProtocolHandler接口负责解析请求并生成 Tomcat Request类。但是这个Request对象不是标准的ServletRequest，不 能用Tomcat Request作为参数来调用容器。
 	Tomcat设计者的解决方案是引 入CoyoteAdapter，这是适配器模式的经典运用，连接器调用 CoyoteAdapter的Sevice方法，传入的是Tomcat Request对象， CoyoteAdapter负责将Tomcat Request转成ServletRequest，再调用容器
-
 
 ### Tomcat Servlet 容器 Catalina
  
