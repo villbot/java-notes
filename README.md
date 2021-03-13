@@ -21,13 +21,17 @@
 ****
 # 分布式篇
 ## 分布式理论
+  1.**[分布式架构概念、发展问题](docs/distributed/分布式架构概念、发展问题.md)**
+  2.**[一致性理论](docs/distributed/一致性理论.md)**
+  3.**[一致性协议2PC](docs/distributed/一致性协议2PC.md)**
+  4.**[一致性协议3PC](docs/distributed/一致性协议3PC.md)**
+  5.**[分布式事务](docs/distributed/分布式事务.md)**
 
- 
 ## CAP定理
-  **[简述CAP定理](docs/distributed/分布式CAP定理.md)**
+  * **[简述CAP定理](docs/distributed/分布式CAP定理.md)**
 
 ## BASE理论
-  **[简述BASE理论](docs/distributed/分布式BASE理论.md)**
+  * **[简述BASE理论](docs/distributed/分布式BASE理论.md)**
 
 ## 一致性算法Paxos和Raft 
   * **[一致性算法Paxos](docs/distributed/一致性算法Paxos.md)**
