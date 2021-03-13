@@ -49,9 +49,13 @@
   
 ## 分布式篇
 ### CAP理论
-  （待完善）
+
+  <!-- * [Apache Tomcat](docs/distributed/Apache%20Tomcat.md) -->
+
 ### BASE理论
-  （待完善）
+
+   <!-- * [Apache Tomcat](docs/distributed/Apache%20Tomcat.md) -->
+
 ### 一致性算法 Paxos
   （待完善）
 ### 一致性算法 Raft 
