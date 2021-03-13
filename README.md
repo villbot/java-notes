@@ -38,5 +38,5 @@
   * **[一致性算法Raft](docs/distributed/一致性算法Raft.md)**
 
 ## 分布式系统设计策略
-  **[分布式系统设计策略](docs/distributed/分布式系统设计策略.md)**
+  * **[分布式系统设计策略](docs/distributed/分布式系统设计策略.md)**
 
