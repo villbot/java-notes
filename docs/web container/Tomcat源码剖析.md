@@ -85,6 +85,7 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 将sun.rml.registry 加入编译器运行配置即可解决问题
 
 7. 在启动类Bootstrap中配置VM参数，Tomcat启动需要加载配置文件（即最开始创建的source目录）
+
 ``` properties
 # 此处目录地址应响应做修改，更换成自己本地地址
 -Dcatalina.home=/Users/jianghai/Documents/resources.nosync/soundCode/apache-tomcat-8.5.64-src/source
