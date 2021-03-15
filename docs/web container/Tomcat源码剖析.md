@@ -135,7 +135,7 @@ Tomcat 我们只需要关注两个流程，Tomcat启动流程、Tomcat请求处�
 3. 回到main方法中可以看到根据传递进来的参数进入到start判断，进行load()和start().
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/917B13E9-D9ED-450C-B03D-444B504AAFE8.png)
 
-进入load()方法，**关键method.invoke(catalinaDaemon, param);**，可以看到通过反射调用catalinaDaemon中的load方法 -> Catalina.load()；
+进入load()方法， **关键method.invoke(catalinaDaemon, param);** ，可以看到通过反射调用catalinaDaemon中的load方法 -> Catalina.load()；
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/F2133538-1BF2-470D-BC7A-C4E5E8C51D1A.png)
 
 4. 进入Catalina.load()方法，可以看到创建了一个Digester（xml解析器）
