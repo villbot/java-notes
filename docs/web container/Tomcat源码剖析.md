@@ -88,16 +88,17 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 ``` properties
 # 此处目录地址应响应做修改，更换成自己本地地址
--Dcatalina.home=/Users/jianghai/Documents/resources.nosync/soundCode/apache-tomcat-8.5.64-src/source
-        -Dcatalina.base=/Users/jianghai/Documents/resources.nosync/soundCode/apache-tomcat-8.5.64-src/source
+-Dcatalina.home=/Users/elgchat/Documents/resources.nosync/soundCode/apache-tomcat-8.5.64-src/source
+        -Dcatalina.base=/Users/elgchat/Documents/resources.nosync/soundCode/apache-tomcat-8.5.64-src/source
         -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
-        -Djava.util.logging.config.file=/Users/jianghai/Documents/resources.nosync/soundCode/apache-tomcat-8.5.64-src/source/conf/logging.properties
+        -Djava.util.logging.config.file=/Users/elgchat/Documents/resources.nosync/soundCode/apache-tomcat-8.5.64-src/source/conf/logging.properties
 ```
 
 8. 启动服务（找到Bootstrap文件中的main启动），启动成功访问[localhost:8080](http://localhost:8080)
 9. （🐞可能会出现问题）
 **问题：出现500错误 org.apache.jasper.JasperException: 无法为JSP编译类**
 在ContextConfig类中configureStart方法内 webConfig()下增加一行代码将jsp引擎初始化
+
 ```java
 
 protected synchronized void configureStart() {
