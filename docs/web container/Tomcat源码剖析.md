@@ -303,4 +303,4 @@ Mapper组件完成url与host、context、wrapper等容器的映射
 所以可以得到下图请求处理流程
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/AB588B4A-A9E2-4A6B-9729-A4E40FBDBB4A.png)
 
-
+具体源代码阅读后期补充.
