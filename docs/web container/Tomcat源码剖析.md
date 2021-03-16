@@ -241,9 +241,9 @@ Tomcat 我们只需要关注两个流程，Tomcat启动流程、Tomcat请求处�
 22. 循环体调用了connector.start();
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/87ACA8DC-2C6E-4709-9A59-1A4439C6BA2D.png)
 
-进入startInternal();
-23. 找到实现Connector中的startInternal()
-24. 
+
+23. 进入startInternal();找到实现Connector中的startInternal()
+
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/602B5D54-48EE-45E7-A34E-87E75F2A850C.png)
 
 再次进入protocolHandler.start(); 选择AbstractProtocol.start();
