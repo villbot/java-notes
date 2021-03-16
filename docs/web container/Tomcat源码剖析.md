@@ -176,9 +176,11 @@ Tomcat 我们只需要关注两个流程，Tomcat启动流程、Tomcat请求处�
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/7A9B759F-FF4B-4294-A783-4570511D130C.png)
 
 10. 进入 getObjectNameKeyProperties()
+
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/56BF765E-8E1A-4CF6-B919-C45CDA7D8620.png)
-可以看到初始化Mapper组件（在Tomcat 请求处理流程有详细描述）
-这样完成了Host及Context等组件初始化
+
+可以看到初始化Mapper组件（在Tomcat 请求处理流程有详细描述），这样完成了Host及Context等组件初始化
+
 11. 回到StandardService.initInternal()中可以看到又调用了executor.init();
 12. 在for循环中可以看到调用了connector.init()；证明在一个service中可以存在多个connector，点击进入init()方法，发现又进入到了LifecycleBase中，点击进入initInternal()，按照以上的惯例，判定为模板方法，那么寻找他的实现，找到Connector类中
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/BC98207C-D40E-421D-B8BF-AB3783738453.png)
