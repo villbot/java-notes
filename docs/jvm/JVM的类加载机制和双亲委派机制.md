@@ -7,7 +7,7 @@
 ![](JVM%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%E5%92%8C%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6/F448A9B6-0C40-4DE0-B0EB-2708B7411A27.png)
 
 * **Boostarp ClassLoader（引导类加载器）**
-由C++编写，加载java核心库，java.* ，构造Extension ClassLoader（扩展类加载器）和Appalication ClassLoader（应用程序类加载器）
+由C++编写，加载java核心库，java.* ，构造Ext ClassLoader（扩展类加载器）和App ClassLoader（应用程序类加载器）
 * **Extension ClassLoader（扩展类加载器）**
 由Java编写，加载扩展库JAVA_HOME/lib/ext目录下的jar包
 * **Appliction ClassLoader（应用程序类加载器）**
