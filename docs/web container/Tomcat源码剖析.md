@@ -1,4 +1,12 @@
 # Tomcat源码剖析
+
+> ⭐️ 友情提示：由于本文整体剖析Tomcat的源码，文章会比较长一些，并且涉及到很多源码截图以及代码，会比较生涩
+> 
+> ⭐️ 阅读指南：建议边阅读边加载本地项目，跟着流程debug查看，这样可能更容易理解，耐心阅读
+> 
+> ⭐️ 获得收获：可以深度了解Tomcat，以及"请求->Tomcat->servlet"之间的关系，当然还有Tomcat的各种设计模式
+> 
+
 ## 构建源代码
 ### 下载源代码
 1. 访问 [Apache Tomcat® 官网](https://tomcat.apache.org) ，选择Download，找到对应的版本
@@ -168,9 +176,11 @@ Tomcat 我们只需要关注两个流程，Tomcat启动流程、Tomcat请求处�
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/7A9B759F-FF4B-4294-A783-4570511D130C.png)
 
 10. 进入 getObjectNameKeyProperties()
+
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/56BF765E-8E1A-4CF6-B919-C45CDA7D8620.png)
-可以看到初始化Mapper组件（在Tomcat 请求处理流程有详细描述）
-这样完成了Host及Context等组件初始化
+
+可以看到初始化Mapper组件（在Tomcat 请求处理流程有详细描述），这样完成了Host及Context等组件初始化
+
 11. 回到StandardService.initInternal()中可以看到又调用了executor.init();
 12. 在for循环中可以看到调用了connector.init()；证明在一个service中可以存在多个connector，点击进入init()方法，发现又进入到了LifecycleBase中，点击进入initInternal()，按照以上的惯例，判定为模板方法，那么寻找他的实现，找到Connector类中
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/BC98207C-D40E-421D-B8BF-AB3783738453.png)
@@ -209,26 +219,33 @@ Tomcat 我们只需要关注两个流程，Tomcat启动流程、Tomcat请求处�
 这时进入StandardService.startInternal()；
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/041D11FC-F9D8-463A-A6FD-EE4FBE3B628F.png)
 18. 可以看到调用了engine.start();
-19. 往下看mapperListener.start(); 
-点击进入mapperListener.start(); 方法
+
+19. 往下看mapperListener.start(); 点击进入mapperListener.start(); 方法
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/E82F0BC4-EEE1-4A7E-838F-C0C64ED3B2EA.png)
 
 20.  点击进入 startInternal();
+
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/B9E421B8-BB7B-4F7F-A53C-ABEC1EABF07F.png)
+
 可以看到这里配置了host相关信息，点击进入registerHost()
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/483AABF3-AD8A-449F-BFA7-76DD168D6145.png)
+
 可以明确看到这里进行了context的注册
 点击进入registerContext();
+
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/55AE8346-5DE8-4F47-9474-FA5F50F8ADDA.png)
+
 这里对wrapper进行配置
 点击进入prepareWrapperMappingInfo();
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/CCD99327-C2FD-4E85-BEF8-653EE02BB85B.png)
+
 21. 回到StandardService中，往下看，可以看到又调用了executor.start();
 22. 循环体调用了connector.start();
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/87ACA8DC-2C6E-4709-9A59-1A4439C6BA2D.png)
 
-进入startInternal();
-找到实现Connector中的startInternal()
+
+23. 进入startInternal();找到实现Connector中的startInternal()
+
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/602B5D54-48EE-45E7-A34E-87E75F2A850C.png)
 
 再次进入protocolHandler.start(); 选择AbstractProtocol.start();
@@ -286,4 +303,4 @@ Mapper组件完成url与host、context、wrapper等容器的映射
 所以可以得到下图请求处理流程
 ![](Tomcat%E6%BA%90%E7%A0%81%E5%89%96%E6%9E%90/AB588B4A-A9E2-4A6B-9729-A4E40FBDBB4A.png)
 
-
+具体源代码阅读后期补充.
