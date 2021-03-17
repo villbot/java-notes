@@ -1,5 +1,5 @@
 # Tomcat 的类加载器
-Tomcat类加载器机制不得不提到Jvm的类加载机制，因为Tomcat类是由Java编写的，即Tomcat的类加载器机制是基于Jvm的类加载机制实现的，对于Jvm的类加载及双亲委派机制可以查看[Tomcat的类加载器](/jvm/JVM的类加载机制和双亲委派机制.md)。
+Tomcat类加载器机制不得不提到Jvm的类加载机制，因为Tomcat类是由Java编写的，即Tomcat的类加载器机制是基于Jvm的类加载机制实现的，对于Jvm的类加载及双亲委派机制可以查看[Tomcat的类加载器](../jvm/JVM的类加载机制和双亲委派机制.md)。
 那么Tomcat类加载机制是什么样子的呢？其实是相对于Jvm类加载器机制做了一些改变，没有严格遵从双亲委派机制，也可以说是打破了双亲委派机制。
 
 ## 为什么说Tomcat类加载机制是打破了双亲委派机制
@@ -23,47 +23,7 @@ Tomcat类加载器机制不得不提到Jvm的类加载机制，因为Tomcat类�
 * Webapp ClassLoader，每个应用程序都会有一个独一无二的Webapp ClassLoader，他用来加载本应用程序 /WEB-INF/classes 和 /WEB-INF/lib 下的类。 
 
 **Tomcat 8.5 默认改变了严格的双亲委派机制**
-	* 首先从 Bootstrap Classloader加载指定的类 
-	* 如果未加载到，则从 /WEB-INF/classes加载
-	* 如果未加载到，则从 /WEB-INF/lib/\*.jar 加载
-	* 如果未加载到，则依次从 System、Common、Shared 加载(在这最后一步，遵从双亲委派机制) 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#Crud Boy/Tomcat#
+* 首先从 Bootstrap Classloader加载指定的类 
+* 如果未加载到，则从 /WEB-INF/classes加载
+* 如果未加载到，则从 /WEB-INF/lib/\*.jar 加载
+* 如果未加载到，则依次从 System、Common、Shared 加载(在这最后一步，遵从双亲委派机制) 
