@@ -5,7 +5,7 @@
 
 > JVM 的类加载机制中有一个非常重要的⻆色叫做类加载器(ClassLoader)，类加载器有自己的体系， Jvm内置了几种类加载器，包括:引导类加载器、扩展类加载器、系统类加载器，他们之间形成父子关 系，通过 Parent 属性来定义这种关系，最终可以形成树形结构。   
 
-![](JVM%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E6%9C%BA%E5%88%B6%E5%92%8C%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6/F448A9B6-0C40-4DE0-B0EB-2708B7411A27.png)
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/F448A9B6-0C40-4DE0-B0EB-2708B7411A27.png)
 
 * **Boostarp ClassLoader（引导类加载器）**
 由C++编写，加载java核心库，java.* ，构造Ext ClassLoader（扩展类加载器）和App ClassLoader（应用程序类加载器）

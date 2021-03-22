@@ -2,7 +2,7 @@
 
 > 2PC ( Two-Phase Commit缩写)即  两阶段提交协议，是将整个事务流程分为两个阶段，准备阶段(Prepare phase)、提交阶段(commit phase)，2是指两个阶段，P是指准备阶段，C是指提交阶段。   
 在计算机中部分关系数据库如Oracle、MySQL支持两阶段提交协议. 
- ![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E5%8D%8F%E8%AE%AE%202PC/page18image27294544.png) 
+ ![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page18image27294544.png) 
 
 1. 准备阶段(Prepare phase):**事务管理器给每个参与者发送Prepare消息，每个数据库参与者在本地执行事 务，并写本地的Undo/Redo日志，此时事务没有提交**。 (Undo日志是记录修改前的数据，用于数据库回 滚，Redo日志是记录修改后的数据，用于提交事务后写入数 据文件) 
 
@@ -10,7 +10,7 @@
 
 ## 2PC执行流程
 **成功执行事务事务提交流程** 
-![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E5%8D%8F%E8%AE%AE%202PC/page19image27432848.png)   
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page19image27432848.png)   
 
 * 阶段一:
 	1. 事务询问：协调者向所有的参与者发送事务内容，询问是否可以执行事务提交操作，并开始等待各参与者的响应。 
@@ -27,12 +27,13 @@
 	协调者接收到所有参与者反馈的 Ack 信息后，完成事务。 
 - - - -
 **中断事务步骤如下:** 
-![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E5%8D%8F%E8%AE%AE%202PC/page20image27423120.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page20image27423120.png) 
 * 阶段一: 
 	1. 事务询问 协调者向所有的参与者发送事务内容，询问是否可以执行事务提交操作，并开始等待各参与者的响应。 
 	2. 执行事务 (写本地的Undo/Redo日志) 
 	3. 各参与者向协调者反馈事务询问的响应 
-	 
+	
+
  **总结: 各个参与者进行投票是否让事务进行.**
 
 * 阶段二 

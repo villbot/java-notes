@@ -3,9 +3,9 @@
 
 CAP 理论含义是，一个分布式系统不可能同时满足**一致性(C:Consistency)::这里指最终一致性::**，**可用性(A: Availability)**和**分区容错性(P:Partition tolerance)**这三个基本需求，**最多只能同时满足其中的2个**。 
 
-![](%E5%88%86%E5%B8%83%E5%BC%8FCAP%E5%AE%9A%E7%90%86/721BF083-2561-4E85-8071-17539BBDE150.png)
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/721BF083-2561-4E85-8071-17539BBDE150.png)
 
-![](%E5%88%86%E5%B8%83%E5%BC%8FCAP%E5%AE%9A%E7%90%86/page13image27391600.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page13image27391600.png) 
 
 
 > **C - Consistency**   
@@ -42,18 +42,18 @@ CAP 理论含义是，一个分布式系统不可能同时满足**一致性(C:Co
 > 商品信息读写要满足分区容错性需要实现如下目标:   
 > 1.主数据库想从数据库同步数据失败不形象写操作   
 > 2.其中一个节点挂掉不会影响另一个节点对外提供服务  
- 
+
 如何实现分区容错性? 
 	1. 尽量使用异步取代同步操作,举例 使用异步方式将数据从主数据库同步到从数据库, 这样节点之间能有效的实现松耦合; 
 	2. 添加数据库节点,其中一个从节点挂掉,由其他从节点提供服务 
 
 ## CAP只能3选2 
- 
-![](%E5%88%86%E5%B8%83%E5%BC%8FCAP%E5%AE%9A%E7%90%86/BB4E0F9C-65E4-4EAA-95C2-862534466DF7.png)
+
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/BB4E0F9C-65E4-4EAA-95C2-862534466DF7.png)
 
 试着证明一下为什么CAP不能同时满足?
 
-![](%E5%88%86%E5%B8%83%E5%BC%8FCAP%E5%AE%9A%E7%90%86/page15image27663264.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page15image27663264.png) 
 
 > 有用户向N1发送了请求更改了数据，将数据库从V0更新成了V1。由于网络断开，所以N2数据库依然是V0，如果这个时候 有一个请求发给了N2，但是N2并没有办法可以直接给出最新的结果V1，这个时候该怎么办呢?   
 >   

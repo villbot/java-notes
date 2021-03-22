@@ -2,7 +2,7 @@
 
 > 3PC，全称 “three phase commit”，是 2PC 的改进版，将 2PC 的 “提交事务请求” 过程一分为二，共形成了由 CanCommit、PreCommit和doCommit三个阶段组成的事务处理协议。   
 
-![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E5%8D%8F%E8%AE%AE%203PC/page22image27379744.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page22image27379744.png) 
 ## 三阶段提交流程 
 ### canCommit
 	1. 事务询问

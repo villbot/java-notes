@@ -1,7 +1,7 @@
 # 分布式理论:一致性算法 Paxos
 
 > Paxos算法是Lamport提出的一种基于消息传递的分布式一致性算法，使其获得2013年图灵奖。   
->   ![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95%20Paxos/page25image27422912.png)   
+>   ![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page25image27422912.png)   
 >   
 > Paxos由Lamport于1998年在《The Part-Time Parliament》论文中首次公开，最初的描述使用希腊的一个小岛 Paxos作为比喻，描述了Paxos小岛中通过决议的流程，并以此命名这个算法，但是这个描述理解起来比较有挑战 性。后来在2001年，Lamport觉得同行不能理解他的幽默感，于是重新发表了朴实的算法描述版本《Paxos Made Simple》   
 > 自Paxos问世以来就持续垄断了分布式一致性算法，Paxos这个名词几乎等同于分布式一致性。Google的很多大型 分布式系统都采用了Paxos算法来解决分布式一致性问题，如Chubby、Megastore以及Spanner等。::开源的 ZooKeeper，以及MySQL 5.7推出的用来取代传统的主从复制的MySQL Group Replication等纷纷采用Paxos算法:: 解决分布式一致性问题。   
@@ -15,13 +15,13 @@ Paxos 一次来确定不可变变量 opi的取值 , 每次确定完Opi之后,各
 注:**这里某个数据的值并不只是狭义上的某个数，它可以是一条日志，也可以是一条命令(command)。。。根据应用场 景不同，某个数据的值有不同的含义** 
 
 ## 背景
-![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95%20Paxos/page26image27775040.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page26image27775040.png) 
 我们假设一种情况，在一个集群环境中，要求所有机器上的状态是一致的，其中有2台机器想修改某个状态，机器 A 想把状态改为 A，机器 B 想把状态改为 B，那么到底听谁的呢? 
 有的同学会想到，可以像 2PC，3PC 一样引入一个协调者，谁先到，听谁的 
-![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95%20Paxos/page27image27535104.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page27image27535104.png) 
 但是如果，协调者宕机了呢?
 所以需要对协调者也做备份，也要做集群。这时候，问题来了，这么多协调者，听谁的呢?
-![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95%20Paxos/page27image27535520.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page27image27535520.png) 
 Paxos 算法就是为了解决这个问题而生的 
 
 ## Paxos相关概念 
@@ -37,7 +37,7 @@ Paxos 算法就是为了解决这个问题而生的
 	* **Learners**:最终决策的学习者 
 	学习者充当该协议的复制因素 
 
-![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95%20Paxos/page28image27293296.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page28image27293296.png) 
 
 ### 问题描述
 假设有一组可以提出提案的进程集合，那么对于一个一致性算法需要保证以下几点:
@@ -49,11 +49,11 @@ Paxos 算法就是为了解决这个问题而生的
 #### 最简单的方案——只有一个Acceptor 
 假设只有一个Acceptor(可以有多个Proposer)，只要Acceptor接受它收到的第一个提案，则该提案被选定，该 提案里的value就是被选定的value。这样就保证只有一个value会被选定。 
 但是，如果这个唯一的Acceptor宕机了，那么整个系统就无法工作了! 因此，必须要有多个Acceptor! 
-![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95%20Paxos/page29image27526160.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page29image27526160.png) 
 
 #### 多个Acceptor 
 多个Acceptor的情况如下图。那么，如何保证在多个Proposer和多个Acceptor的情况下选定一个value呢? 
-![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95%20Paxos/page29image27525328.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page29image27525328.png) 
 下面开始寻找解决方案。 
 首先我们希望即使只有一个Proposer提出了一个value，该value也最终被选定。 
 那么，就得到下面的约束: 
@@ -61,7 +61,7 @@ Paxos 算法就是为了解决这个问题而生的
 ::**P1:一个Acceptor必须接受它收到的第一个提案。**:: 
 
 但是，这又会引出另一个问题:如果每个Proposer分别提出不同的value，发给不同的Acceptor。根据P1， Acceptor分别接受自己收到的第一个提案，就导致不同的value被选定。出现了不一致。如下图: 
-![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95%20Paxos/page30image27292256.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page30image27292256.png) 
 刚刚是因为『一个提案只要被一个Acceptor接受，则该提案的value就被选定了』才导致了出现上面不一致的问 题。因此，我们需要加一个规定: 
 
 ::**规定:一个提案被选定需要被半数以上的Acceptor接受**:: 
@@ -79,7 +79,7 @@ Paxos 算法就是为了解决这个问题而生的
 
 只要满足了P2a，就能满足P2。 
 
-![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95%20Paxos/page31image27289968.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page31image27289968.png) 
 
 但是，考虑如下的情况:假设总的有5个Acceptor。Proposer2提出[M1,V1]的提案，Acceptor2-5(半数以上)均 接受了该提案，于是对于Acceptor2-5和Proposer2来讲，它们都认为V1被选定。Acceptor1刚刚从宕机状态恢复 过来(之前Acceptor1没有收到过任何提案)，此时Proposer1向Acceptor1发送了[M2,V2]的提案(V2≠V1且 M2>M1)，对于Acceptor1来讲，这是它收到的第一个提案。根据P1(一个Acceptor必须接受它收到的第一个提 案。),Acceptor1必须接受该提案!同时Acceptor1认为V2被选定。这就出现了两个问题: 
 	1. Acceptor1认为V2被选定，Acceptor2~5和Proposer2认为V1被选定。出现了不一致。
@@ -137,7 +137,7 @@ Proposer生成提案之前，应该先去『学习』已经被选定或者可能
 
 #### Acceptor 算法优化
 
-![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95%20Paxos/page33image55202064.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page33image55202064.png) 
 
 > ::如果Acceptor收到一个编号为N的Prepare请求，在此之前它已经响应过编号大于N的Prepare请求。根据P1a，该 Acceptor不可能接受编号为N的提案。因此，该Acceptor可以忽略编号为N的Prepare请求。::   
 
@@ -148,7 +148,7 @@ Proposer生成提案之前，应该先去『学习』已经被选定或者可能
 
 Paxos算法分为两个阶段。具体如下: 
 
-![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95%20Paxos/page34image55277584.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page34image55277584.png) 
 1. 阶段一:
 	* Proposer选择一个提案编号N，然后向半数以上的Acceptor发送编号为N的Prepare请求。 
 	* 如果一个Acceptor收到一个编号为N的Prepare请求，且N大于该Acceptor已经响应过的所有Prepare请求 的编号，那么它就会将它已经接受过的编号最大的提案(如果有的话)作为响应反馈给Proposer，同时该 Acceptor承诺不再接受任何编号小于N的提案。 
@@ -158,7 +158,7 @@ Paxos算法分为两个阶段。具体如下:
 当然，实际运行过程中，每一个Proposer都有可能产生多个提案，但只要每个Proposer都遵循如上所述的算法运行，就一定能够保证算法执行的正确性 
 
 ### Learner学习被选定的value 
-![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95%20Paxos/page35image55055648.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page35image55055648.png) 
 1. 方案一: Learner获取一个已经被选定的提案的前提是，该提案已经被半数以上的Acceptor批准，因此，最简单的 做法就是一旦Acceptor批准了一个提案，就将该提案发送给所有的Learner 
 很显然，这种做法虽然可以让Learner尽快地获取被选定的提案，但是却需要让每个Acceptor与所有的Learner逐 个进行一次通信，通信的次数至少为二者个数的乘积 
 2. 方案二: 
@@ -167,13 +167,13 @@ Paxos算法分为两个阶段。具体如下:
 3. 方案三: 
 在讲解方案二的时候，我们提到，方案二最大的问题在于主Learner存在单点问题，即主Learner随时可能出现故 障，因此，对方案二进行改进，可以将主Learner的范围扩大，即Acceptor可以将批准的提案发送给一个特定的 Learner集合，该集合中每个Learner都可以在一个提案被选定后通知其他的Learner。这个Learner集合中的 Learner个数越多，可靠性就越好，但同时网络通信的复杂度也就越高 
 
+### 如何保证Paxos算法的活性
 
-### 如何保证Paxos算法的活性 
 根据前面的内容讲解，我们已经基本上了解了Paxos算法的核心逻辑，那接下来再来看看Paxos算法在实际过程中的一些细节 
 
 活性:最终一定会发生的事情:最终一定要选定value 
 
 假设存在这样一种极端情况，有两个Proposer依次提出了一系列编号递增的提案，导致最终陷入死循环，没有value被选定,具体流程如下: 
-![](%E5%88%86%E5%B8%83%E5%BC%8F%E7%90%86%E8%AE%BA%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95%20Paxos/page36image55307856.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page36image55307856.png) 
 
 解决:通过选取主Proposer，并规定只有主Proposer才能提出议案。这样一来只要主Proposer和过半的Acceptor 能够正常进行网络通信，那么但凡主Proposer提出一个编号更高的提案，该提案终将会被批准，这样通过选择一个 主Proposer，整套Paxos算法就能够保持活性 

@@ -1,7 +1,7 @@
 ## 浅谈Http与Tomcat关系
 提及Tomcat自然会想到http请求，那么http请求的处理过程是什么样的？
 
-![](Apache%20Tomcat/73E87451-295C-4EC1-82AF-09116C6F0AA6.png)
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/73E87451-295C-4EC1-82AF-09116C6F0AA6.png)
 
 1. 用户请求某个URL资源
 2. 浏览器/客户端监听到用户操作，解析请求域名，检索DNS（浏览器DNS -> 系统DNS -> 路由DNS ->  ISP（互联网服务提供商） DNS缓存，除ISP其他的位置检索到DNS，需要验证是否过期，过期会向后位继续查询 )，查询服务器具体IP地址
@@ -20,7 +20,7 @@
 
 那么Tomcat是怎么样实现与业务代码进行交互的呢？
 
-![](Apache%20Tomcat/0ED88F49-099B-4891-B798-AF43A4ADEED5.png)
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/0ED88F49-099B-4891-B798-AF43A4ADEED5.png)
 
 1. 当用户请求与某个资源时，HTTP服务器会将Request对象封装成ServletRequest对象
 2. 进一步会在Servlet容器中根据URL和Servlet映射关系，找到相应的Servlet，进一步去调用Servlet
@@ -44,14 +44,14 @@ Tomcat设计了两个核心组件
 当然除了Coyote和Catalina 之外也存在一些其他的模块
 Jasper 模块提供 JSP 引 擎，Naming 提供JNDI 服务，Juli 提供日志服务。 
 
-![](Apache%20Tomcat/70CE4F07-A502-4B2D-9380-B4B1A5507F00.png)
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/70CE4F07-A502-4B2D-9380-B4B1A5507F00.png)
 
 根据上图Tomcat模块分层图很直观能看到coyote 和Catalina是比较关键组件，那么下面我们具体来分析这个几个组件之间的关系
 
 ### 连接器组件（Coyote）
 顾名思义，连接器组件的职责就是服务器建立连接，发送请求并接受响应
 
-![](Apache%20Tomcat/396A7420-42BC-43A8-B6B8-B7D331F811C8.png)
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/396A7420-42BC-43A8-B6B8-B7D331F811C8.png)
 
 如上图所示，Coyote（连接器组件）与容器（Catalina）之间交互，
 
@@ -62,13 +62,13 @@ Jasper 模块提供 JSP 引 擎，Naming 提供JNDI 服务，Juli 提供日志�
 
 #### Tomcat Coyote 支持的IO模型与协议
 
-![](Apache%20Tomcat/page6image30771856.png) 
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/page6image30771856.png) 
 
 在 8.0 之前 ，Tomcat 默认采用的I/O方式为 BIO，之后改为 NIO。 无论 NIO、NIO2 还是 APR， 在性 能方面均优于以往的BIO。 如果采用APR， 甚至可以达到 Apache HTTP Server 的响应性能。 
 
 #### Tomcat Coyote 的内部组件及流程
 
-![](Apache%20Tomcat/A0C7C7C0-D7CE-481C-950F-8F79E7D1E075.png)
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/A0C7C7C0-D7CE-481C-950F-8F79E7D1E075.png)
 
 * **EndPoint：**
 	EndPoint 是 Coyote 通信端点，即通信监听的接口，是具体Socket接收和发 送处理器，是对传输层的抽象，因此EndPoint用来实现TCP/IP协议的 
@@ -84,7 +84,7 @@ Jasper 模块提供 JSP 引 擎，Naming 提供JNDI 服务，Juli 提供日志�
 
 Tomcat是一个由多个可配置（conf/server.xml）组件组成的web容器，而Catalina 是Tomcat的servlet容器，也可以说Tomcat是一个Servlet容器，Catalina是Tomcat的核心，其他模块都是为Catalina提供支撑的
 
-![](Apache%20Tomcat/735CCE59-3CE7-407B-8583-D927561D42F5.png)
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/735CCE59-3CE7-407B-8583-D927561D42F5.png)
 
 如上图所示，可以认为Tomcat就是一个Catalina实例，Tomcat启动的时候会初始化Catalina实例，Catalina实例又会加载server.xml完成其他实例创建，创建一个server，server又会创建并管理多个service服务，每个service又会存在多个connector和一个container。
 
@@ -112,9 +112,9 @@ Tomcat是一个由多个可配置（conf/server.xml）组件组成的web容器�
 ## Tomcat服务器核心配置详解
 在[[Apache Tomcat]]中可以可以看到整体Apache Tomcat整体的一个架构情况以及核心组件的流程，那么在Tomcat中，如何去配置相关的核心组件呢？其实配置文件就在conf/server.xml中
 
-![](Apache%20Tomcat/93BE0FDF-802D-4D72-B23D-CB10F6530A6F.png)
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/93BE0FDF-802D-4D72-B23D-CB10F6530A6F.png)
 
-文件上查看 <a href='https://github.com/elgchat/elgChat/blob/main/docs/web%20container/Apache%20Tomcat/server.xml'>server.xml</a>
+文件上查看 <a href='https://github.com/elgchat/elgChat/blob/main/assets/file/server.xml'>server.xml</a>
 
 ## TinyCat - 手写实现简易版的Tomcat
 
