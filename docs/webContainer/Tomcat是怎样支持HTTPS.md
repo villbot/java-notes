@@ -17,7 +17,7 @@ keytool -genkey -alias lagou -keyalg RSA -keystore lagou.keystore
 ```java
 <Connector port="8443" protocol="org.apache.coyote.http11.Http11NioProtocol"maxThreads="150" schema="https" secure="true" SSLEnabled="true">
     <SSLHostConfig>
-        <Certificate certificateKeystoreFile="/Users/yingdian/workspace/servers/apache-tomcat-8.5.50/conf/lagou.keystore" certificateKeystorePassword="lagou123"type="RSA"/>
+        <Certificate certificateKeystoreFile="/Users/yingdian/workspace/servers/apache-tomcat-8.5.50/conf/elgchat.keystore" certificateKeystorePassword="lagou123"type="RSA"/>
     </SSLHostConfig>
 </Connector>
 ```
