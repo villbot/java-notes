@@ -22,8 +22,8 @@
 # Java基础
 
 ## JVM原理及优化
-  1. **[JVM的类加载机制和双亲委派机制](docs/Jvm/JVM的类加载机制和双亲委派机制.md)**
-  2. **[JVM优化](docs/Jvm/JVM优化.md)**
+  1. **[JVM的类加载机制和双亲委派机制](docs/jvm/JVM的类加载机制和双亲委派机制.md)**
+  2. **[JVM优化](docs/jvm/JVM优化.md)**
 
 ****
 # 网络
