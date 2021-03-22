@@ -81,7 +81,7 @@ Jasper 模块提供 JSP 引 擎，Naming 提供JNDI 服务，Juli 提供日志�
 	Tomcat设计者的解决方案是引 入CoyoteAdapter，这是适配器模式的经典运用，连接器调用 CoyoteAdapter的Sevice方法，传入的是Tomcat Request对象， CoyoteAdapter负责将Tomcat Request转成ServletRequest，再调用容器
 
 ### Tomcat Servlet 容器 Catalina
- 
+
 Tomcat是一个由多个可配置（conf/server.xml）组件组成的web容器，而Catalina 是Tomcat的servlet容器，也可以说Tomcat是一个Servlet容器，Catalina是Tomcat的核心，其他模块都是为Catalina提供支撑的
 
 ![](Apache%20Tomcat/735CCE59-3CE7-407B-8583-D927561D42F5.png)
@@ -114,7 +114,8 @@ Tomcat是一个由多个可配置（conf/server.xml）组件组成的web容器�
 
 ![](Apache%20Tomcat/93BE0FDF-802D-4D72-B23D-CB10F6530A6F.png)
 
-文件上查看 <a href='https://github.com/elgchat/ElgCaht/blob/main/docs/web%20container/Apache%20Tomcat/server.xml'>server.xml</a>
+文件上查看 <a href='https://github.com/elgchat/elgChat/blob/main/docs/web%20container/Apache%20Tomcat/server.xml'>server.xml</a>
 
 ## TinyCat - 手写实现简易版的Tomcat
+
 [TinyCat](https://github.com/elgchat/TinyCat)

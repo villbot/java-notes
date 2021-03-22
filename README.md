@@ -22,6 +22,7 @@
 # Java基础
 ## JVM原理及优化
   1. **[JVM的类加载机制和双亲委派机制](docs/jvm/JVM的类加载机制和双亲委派机制.md)**
+    2. **[JVM优化](docs/jvm/JVM优化.md)**
 
 ****
 # 网络
@@ -38,11 +39,13 @@
   3. **[Tomcat源码剖析](docs/web%20container/Tomcat源码剖析.md)**
   4. **[Tomcat 的类加载器](docs/web%20container/Tomcat的类加载器.md)**
   5. **[Tomcat是怎样支持HTTPS](docs/web%20container/Tomcat的类加载器.md)**
+    6. **[Tomcat性能优化](docs/web%20container/Tomcat性能优化.md)**
 
 
 ****
 # 分布式篇
 ## 分布式理论
+
   1. **[分布式架构概念、发展问题](docs/distributed/分布式架构概念、发展问题.md)**
   2. **[一致性理论](docs/distributed/一致性理论.md)**
   3. **[一致性协议2PC](docs/distributed/一致性协议2PC.md)**
