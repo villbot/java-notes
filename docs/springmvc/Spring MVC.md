@@ -31,5 +31,9 @@ Spring MVC 本质可以认为是对servlet的封装，简化了我们serlvet的�
 
 ### Spring MVC请求处理流程
 
-![image-20210323121652187](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_23/image-20210323121652187.png)
+![image-20210323122039959](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_23/image-20210323122039959.png)
 
+1. 用户发送请求到前端控制器DispatcherServlet
+2. DispatcherServlet收到请求调用HandlerMapping处理映射器
+3. HandlerMapping根据请求的url地址找到具体的Handler，生成处理器对象及处理器拦截器（如果有则生成）并返回DispatcherServlet
+4. 
