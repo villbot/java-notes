@@ -29,9 +29,8 @@
 
 # 框架
 
-## Spring Mvc
-
-	1. **[Spring MVC.md](docs/springmvc/Spring MVC.md) **
+## Spring MVC
+ 1. **[Spring MVC](docs/springmvc/Spring%20MVC.md)**
 
 ****
 # 网络
