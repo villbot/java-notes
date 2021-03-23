@@ -30,7 +30,7 @@
 # 框架
 
 ## Spring MVC
- 1. **[初识Spring MVC](docs/springmvc/初识SpringMVC.md)**
+ 1. **[初识SpringMVC.md](docs/springmvc/初识SpringMVC.md)** 
 
 ****
 # 网络
