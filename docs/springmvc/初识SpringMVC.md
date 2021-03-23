@@ -86,7 +86,7 @@ Spring MVC 本质可以认为是对servlet的封装，简化了我们serlvet的�
 
   FlashMap 用于重定向时的参数传递，比如在处理用户订单时候，为了避免重复提交，可以处理完 post请求之后重定向到一个get请求，这个get请求可以用来显示订单详情之类的信息。这样做虽然 可以规避用户重新提交订单的问题，但是在这个⻚面上要显示订单的信息，这些数据从哪里来获得 呢?因为重定向时么有传递参数这一功能的，如果不想把参数写进URL(不推荐)，那么就可以通 过FlashMap来传递。只需要在重定向之前将要传递的数据写入请求(可以通过ServletRequestAttributes.getRequest()方法获得)的属性OUTPUT_FLASH_MAP_ATTRIBUTE 中，这样在重定向之后的Handler中Spring就会自动将其设置到Model中，在显示订单信息的⻚面 上就可以直接从Model中获取数据。FlashMapManager 就是用来管理 FalshMap 的。
 
-## Spring MVC 参数绑定及请求拦截
+## Spring MVC 参数绑定及请求匹配方式
 
 ### 回顾Spring MVC的配置流程
 
@@ -153,12 +153,12 @@ Spring MVC 本质可以认为是对servlet的封装，简化了我们serlvet的�
            <servlet-name>springmvc</servlet-name>
    
            <!-- 方式一：带后缀 *.action，*.do-->
-           <!-- 方式二：/ 不会拦截.jsp等静态文件请求-->
+           <!-- 方式二：/ 不会拦截.jsp 但是会拦截.html、css、js、png等静态资源-->
            <!-- 方式二：/* 即拦截所有-->
            <url-pattern>/</url-pattern>
        </servlet-mapping>
    </web-app>
-     ```
+   ```
 
 4. 创建controller
 
@@ -205,5 +205,163 @@ Spring MVC 本质可以认为是对servlet的封装，简化了我们serlvet的�
 
 ### 如何进行请求拦击处理？
 
-​		实际上就在webapp/WEB-INF/web.xml中配置的<url-pattern>
+实际上就在webapp/WEB-INF/web.xml中配置的url-pattern
+
+```xml
+<!--拦截匹配规则url请求，是否进入springmvc处理--> 
+<url-pattern>/</url-pattern>
+```
+
+常用的方式有三种
+
+1. *.xxx (xxx可以为任意后缀，常用有action、do等)
+2. /  不会拦截.jsp 但是会拦截.html、css、js、png等静态资源
+3. /* 即拦截所有
+
+#### 为什么配置/ 会拦截静态资源？
+
+实际上在项目启动容器tomcat里也存在一个web.xml（项目中的web.xml与tomcat中的web.xml是一个继承关系），以下是tomcat/conf/web.xml 配置内容片段
+
+```xml
+<servlet>
+  <servlet-name>default</servlet-name>
+  <servlet-class>org.apache.catalina.servlets.DefaultServlet</servlet-class>
+  <init-param>
+    <param-name>debug</param-name>
+    <param-value>0</param-value>
+  </init-param>
+  <init-param>
+    <param-name>listings</param-name>
+    <param-value>false</param-value>
+  </init-param>
+  <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet>
+  <servlet-name>jsp</servlet-name>
+  <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+  <init-param>
+    <param-name>fork</param-name>
+    <param-value>false</param-value>
+  </init-param>
+  <init-param>
+    <param-name>xpoweredBy</param-name>
+    <param-value>false</param-value>
+  </init-param>
+  <load-on-startup>3</load-on-startup>
+</servlet>
+
+<!-- The mapping for the default servlet -->
+<servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>/</url-pattern>
+</servlet-mapping>
+
+<!-- The mappings for the JSP servlet -->
+<servlet-mapping>
+  <servlet-name>jsp</servlet-name>
+  <url-pattern>*.jsp</url-pattern>
+  <url-pattern>*.jspx</url-pattern>
+</servlet-mapping>
+
+```
+
+可以看到tomcat中的web.xml中存在defaultServlet，那么default配置的servlet-mapping默认配置的是/
+
+```xml
+<!-- The mapping for the default servlet -->
+<servlet-mapping>
+  <servlet-name>default</servlet-name>
+  <url-pattern>/</url-pattern>
+</servlet-mapping>
+```
+
+##### 既然存在父级的默认配置为什么还需要配置？
+
+当然是为了覆盖父级配置，因为当匹配/的时候回进入到子级配置，不会走到父级配置
+
+##### 为什么不拦截JSP资源呢？
+
+因为在父（tomcat）的web.xml中存在一个名叫jsp的的拦截器，但是我们并没有重写这个配置，所以spring mvc此时不拦截jsp，jsp的处理交给tomcat
+
+```xml
+<servlet>
+  <servlet-name>jsp</servlet-name>
+  <servlet-class>org.apache.jasper.servlet.JspServlet</servlet-class>
+  <init-param>
+    <param-name>fork</param-name>
+    <param-value>false</param-value>
+  </init-param>
+  <init-param>
+    <param-name>xpoweredBy</param-name>
+    <param-value>false</param-value>
+  </init-param>
+  <load-on-startup>3</load-on-startup>
+</servlet>
+<!-- The mappings for the JSP servlet -->
+<servlet-mapping>
+  <servlet-name>jsp</servlet-name>
+  <url-pattern>*.jsp</url-pattern>
+  <url-pattern>*.jspx</url-pattern>
+</servlet-mapping>
+```
+
+#### 配置/ 时如何允许静态资源访问呢？
+
+1. 静态资源配置解决方案一
+
+  ```xml
+<!--添加该标签之后，会在spring mvc上下文中定义一个defaultServletHttpRequestHandler对象,会对进入DispatcherServlet的url进行过滤筛选，如果是静态资源则会把请求转由web应用服务器处理,如果不是静态资源将继续由spring mvc处理 -->
+<mvc:default-servlet-handler/>
+  ```
+
+这种方案会有局限，只能将静态资源放在webapp根目录下，不能放在其他目录
+
+2. 静态资源配置解决方案二
+
+```xml
+<!--mapping:静态资源约定的url规则-->
+<!--location:指定静态资源的存放位置，支持多目录-->
+<mvc:resources mapping="/static/**" location="/,/WEB-INF/static/"/>
+```
+
+### 数据的封装返回
+
+
+
+```java
+@Controller
+@RequestMapping("/demo")
+public class DemoController {
+  	
+  	   @RequestMapping("/handle01")
+    public ModelAndView handle01() {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("time", localDateTime);
+        modelAndView.setViewName("success");
+        return modelAndView;
+    }
+
+    @RequestMapping("/handle12")
+    public String handle12(ModelMap modelMap) {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        modelMap.addAttribute("time", localDateTime);
+        return "success";
+    }
+
+    @RequestMapping("/handle13")
+    public String handle13(Model model) {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        model.addAttribute("time", localDateTime);
+        return "success";
+    }
+
+    @RequestMapping("/handle14")
+    public String handle14(Map<String,Object> map) {
+        LocalDateTime localDateTime = LocalDateTime.now();
+        map.put("time", localDateTime);
+        return "success";
+    }
+}
+```
 
