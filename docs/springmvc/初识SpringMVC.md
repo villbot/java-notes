@@ -326,26 +326,16 @@ Spring MVC 本质可以认为是对servlet的封装，简化了我们serlvet的�
 
 ### 数据的封装返回
 
-
-
 ```java
 @Controller
 @RequestMapping("/demo")
 public class DemoController {
   	
-  	   @RequestMapping("/handle01")
-    public ModelAndView handle01() {
-        LocalDateTime localDateTime = LocalDateTime.now();
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("time", localDateTime);
-        modelAndView.setViewName("success");
-        return modelAndView;
-    }
-
-    @RequestMapping("/handle12")
+  	@RequestMapping("/handle12")
     public String handle12(ModelMap modelMap) {
         LocalDateTime localDateTime = LocalDateTime.now();
         modelMap.addAttribute("time", localDateTime);
+        System.out.println("modelMap=======>>>" + modelMap.getClass());
         return "success";
     }
 
@@ -353,6 +343,7 @@ public class DemoController {
     public String handle13(Model model) {
         LocalDateTime localDateTime = LocalDateTime.now();
         model.addAttribute("time", localDateTime);
+        System.out.println("model=======>>>" + model.getClass());
         return "success";
     }
 
@@ -360,8 +351,33 @@ public class DemoController {
     public String handle14(Map<String,Object> map) {
         LocalDateTime localDateTime = LocalDateTime.now();
         map.put("time", localDateTime);
+        System.out.println("map=======>>>" + map.getClass());
         return "success";
     }
 }
 ```
+
+spring mvc在handler方法上传入map、model、modelMap参数，并向参数中保存数据（放入请求域），都可以在页面中获取到，那么他们之间的关系是什么？
+
+分别请求请求上述handler
+
+![image-20210323180156374](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_23/image-20210323180156374.png)
+
+可以看到具体的类型都是org.springframework.validation.support.BindingAwareModelMap，相当于给BindingAwareModelMap保存中的数据都会放在请求域中
+
+1. Map（是jdk中的接口）
+2. model（是org.springframework.ui，即spring的接口）
+3. modelMap(查看源码，可以看到是实现了LinkedHashMap，即实现了map接口)
+
+我们继续查看BindingAwareModelMap这个类
+
+![image-20210323204948267](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_23/image-20210323204948267.png)
+
+继续查看ExtendedModelMap
+
+![image-20210323180634190](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_23/image-20210323180634190.png)
+
+那么可以得出结论，BindingAwareModelMap 实际上是继承了modelMap，实现了model接口，所以实际无论使用哪种方式，实际底层上使用的都是BindingAwareModelMap。
+
+### 请求参数绑定
 
