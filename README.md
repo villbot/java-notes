@@ -27,6 +27,24 @@
 
 ****
 
+# 数据结构与算法
+
+1.  **[时间与空间复杂度](docs/algorithm/时间与空间复杂度.md) **
+
+## 数据结构
+
+### 线性表
+
+线性表(Linear List)就是数据排成像一条线一样的结构，数据只有前后两个方向
+
+![image-20210329160254959](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_29/image-20210329160254959.png)
+
+1. **[数组](docs/algorithm/数组.md) **
+
+## 算法
+
+
+
 # 框架
 
 ## Spring MVC
