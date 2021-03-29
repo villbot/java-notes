@@ -33,6 +33,8 @@
 
 ## 数据结构
 
+推荐一个[数据结构和算法的可视化网站](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
+
 ### 线性表
 
 线性表(Linear List)就是数据排成像一条线一样的结构，数据只有前后两个方向
