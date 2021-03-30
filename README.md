@@ -41,7 +41,7 @@
 
 1. **[数据结构之线性表【数组】](docs/algorithm/数组.md)**
 2. **[数据结构之线性表【链表】](docs/algorithm/链表.md)** 
-3. **[数据结构之线性表【栈】](docs/algorithm/栈.md) **
+3. **[数据结构之线性表【栈】](docs/algorithm/栈.md)**
 
 ## 算法
 
