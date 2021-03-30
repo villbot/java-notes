@@ -39,8 +39,9 @@
 
 线性表(Linear List)就是数据排成像一条线一样的结构，数据只有前后两个方向
 
-1. **[初识数组，了解数组存储及操作](docs/algorithm/数组.md)**
-2.  **[初识链表，了解存储原理及操作](docs/algorithm/链表.md)** 
+1. **[数据结构之线性表【数组】](docs/algorithm/数组.md)**
+2. **[数据结构之线性表【链表】](docs/algorithm/链表.md)** 
+3. **[数据结构之线性表【栈】](docs/algorithm/栈.md) **
 
 ## 算法
 
