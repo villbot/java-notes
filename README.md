@@ -18,7 +18,7 @@
 >
 > **说明：** 本文档会持续更新，长期进行维护。
 >
-> **源码**：本文涉及到的所有代码实现均在项目 **[learning](https://github.com/elgchat/learning)**中
+> **源码**：本文涉及到的所有代码实现均在项目 [learning](https://github.com/elgchat/learning)中
 
 ****
 # Java基础
@@ -36,7 +36,7 @@
 
 ## 数据结构
 
-推荐一个**[数据结构和算法的可视化网站](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)**
+推荐一个[数据结构和算法的可视化网站](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
 
 ### 线性表
 
