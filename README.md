@@ -44,6 +44,10 @@
 3. **[数据结构之线性表【栈】](docs/algorithm/栈.md)**
 4.  **[数据结构之线性表【队列】](docs/algorithm/队列.md)** 
 
+### 散列表
+
+1.  **[数据结构之散列表【hash】](docs/algorithm/散列表.md)** 
+
 ## 算法
 
 
