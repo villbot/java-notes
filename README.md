@@ -18,7 +18,7 @@
 >
 > **说明：** 本文档会持续更新，长期进行维护。
 >
-> **源码**：本文涉及到的所有代码实现均在项目 [learning](https://github.com/elgchat/learning)中
+> **源码**：本文涉及到的所有代码实现均在项目 [learning](https://github.com/elgchat/learning)中可以找到。
 
 ****
 # Java基础
