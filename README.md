@@ -42,14 +42,14 @@
 
 线性表(Linear List)就是数据排成像一条线一样的结构，数据只有前后两个方向
 
-1. **[数据结构之线性表【数组】](docs/data_structure/数组.md)**
-2. **[数据结构之线性表【链表】](docs/data_structure/链表.md)** 
-3. **[数据结构之线性表【栈】](docs/data_structure/栈.md)**
-4.  **[数据结构之线性表【队列】](docs/data_structure/队列.md)** 
+1. **[数据结构之线性表【数组】](docs/data/数组.md)**
+2. **[数据结构之线性表【链表】](docs/data/链表.md)** 
+3. **[数据结构之线性表【栈】](docs/data/栈.md)**
+4.  **[数据结构之线性表【队列】](docs/data/队列.md)** 
 
 ### 散列表
 
-1.  **[数据结构之散列表【hash】](docs/data_structure/散列表.md)** 
+1.  **[数据结构之散列表【hash】](docs/data/散列表.md)** 
 
 ## 算法
 
