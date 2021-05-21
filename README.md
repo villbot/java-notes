@@ -126,6 +126,5 @@
 # 搜索引擎
 
 ## Elasticsearch
-
 * **[全文搜索引擎Elasticsearch基础](docs/elasticsearch/全文搜索引擎Elasticsearch基础.md)** （ES简介、特点、版本、使用场景及主流搜索方案对比）
 

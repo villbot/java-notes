@@ -126,9 +126,8 @@ Elasticsearch 主流版本为5.x、6.x、7.x版本
 ## Elasticsearch 兼容
 
 ### 与操作系统间的兼容
-
 [点击查看Elasticsearch与操作系统兼容官网描述](https://www.elastic.co/cn/support/matrix#matrix_os)
 
-### 与Jdk的兼容
+### 与Java虚拟机（JDK）的兼容
 
 [点击查看Elasticsearch与JDK兼容官网描述](https://www.elastic.co/cn/support/matrix#matrix_jvm)
