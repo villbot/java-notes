@@ -1,4 +1,3 @@
-
 <img src="https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_05_21/image-20210521150829408.png" alt="image-20210521150829408" style="zoom:50%;" />
 
 Elaticsearch简称为ES,是一个开源的可扩展的分布式的**全文检索引擎**，它可以近乎实时的存储、检索数 据。本身扩展性很好，可扩展到上百台服务器，处理**PB**级别的数据。ES使用Java开发并使用Lucene作 为其核心来实现索引和搜索的功能，但是它通过简单的**RestfulAPI**和**javaAPI**来隐藏Lucene的复杂性， 从而让全文搜索变得简单。
