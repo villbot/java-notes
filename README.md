@@ -127,7 +127,7 @@ BASE 理论是对 CAP 中一致性和可用性权衡的结果，其来源于对�
 
 **Paxos 算法**诞生于 1990 年，这是一种解决分布式系统一致性的经典算法 。但是，由于 Paxos 算法非常难以理解和实现，不断有人尝试简化这一算法。到了2013 年才诞生了一个比 Paxos 算法更易理解和实现的分布式一致性算法—**Raft 算法**。
 
-关于 Paxos算法和Raft算法 的详细解读请看： [**《Paxos算法》**](docs/distributed/一致性算法Paxos.md)、[**《Raft算法》**](docs/distributed/一致性算法Raft.md)
+关于 Paxos算法和Raft算法 的详细解读请看：**[《Paxos算法》](docs/distributed/一致性算法Paxos.md)、[《Raft算法》](docs/distributed/一致性算法Raft.md)** 
 
 ### 分布式事务
 
