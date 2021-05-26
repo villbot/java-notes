@@ -107,7 +107,7 @@ Elaticsearch简称为ES,是一个开源的可扩展的分布式的**全文检索
 
 一致性是分布式理论中的根本性问题，近半个世纪以来，科学家们围绕着一致性问题提出了很多理论模型，依据这些理论模型，业界也出现了很多工程实践投影。下面我们从一致性问题、特定条件下解决一致性问题的两种方法(2PC、3PC)入门，了解最基础的分布式系统理论。。
 
-关于 分布式一致性 的详细解读请看：**[一致性理论](docs/distributed/一致性理论.md)**、**[2PC协议](docs/distributed/一致性协议2PC.md)**、**[3PC协议](docs/distributed/一致性协议3PC.md)**
+关于 分布式一致性 的详细解读请看：**[一致性理论](docs/distributed/一致性理论.md)、[2PC协议](docs/distributed/一致性协议2PC.md)、[3PC协议](docs/distributed/一致性协议3PC.md)**
 
 ### CAP理论
 
