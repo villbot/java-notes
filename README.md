@@ -20,6 +20,8 @@
 > **说明：** 本文档会持续更新，长期进行维护。
 >
 > **源码**：本文涉及到的所有代码实现均在项目 [learning](https://github.com/elgchat/learning)中可以找到。
+>
+> **提示：**真实面试题汇总在本文档最后！
 
 
 
@@ -49,7 +51,9 @@
 这里给大家推荐一个[可视化数据结构和算法](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html)的网站
 
 * **图解线性数据结构：[数组](docs/data/数组.md)、[链表](docs/data/链表.md)、[栈](docs/data/栈.md)、[队列](docs/data/队列.md)** 
+
 * **图解散列表数据结构：[散列表（hash）](docs/data/散列表.md)**
+
 * **图解树状数据结构：  [树的概念](docs/data/tree/树的概念.md)、 [二叉树](docs/data/tree/二叉树.md)、 [红黑树](docs/data/tree/红黑树.md)**
 
 ## 算法
@@ -92,7 +96,6 @@ Elaticsearch简称为ES,是一个开源的可扩展的分布式的**全文检索
 ### Tomcat
 
 * **[从入门到进阶：彻底掌握Apache Tomcat](docs/webContainer/Apache%20Tomcat.md)** 
-
 - **[灵魂拷问：Tomcat的类加载器是怎么打破了双亲委派机制](docs/webContainer/Tomcat的类加载器.md)** 
 - **[灵魂拷问：Tomcat是怎样支持HTTPS](docs/webContainer/Tomcat是怎样支持HTTPS.md)** 
 - **[灵魂拷问：Tomcat如何进行性能优化](docs/webContainer/Tomcat性能优化.md)** 
@@ -118,7 +121,7 @@ BASE 是 Basically Available（基本可用） 、Soft-state（软状态） 和 
 
 BASE 理论是对 CAP 中一致性和可用性权衡的结果，其来源于对大规模互联网系统分布式实践的总结，是基于 CAP 定理逐步演化而来的，它大大降低了我们对系统的要求。
 
-关于 BASE 的详细解读请看：**[《简述BASE理论》](docs/distributed/分布式BASE理论.md)**
+关于 BASE 的详细解读请看：[**《简述BASE理论》**](docs/distributed/分布式BASE理论.md)
 
 ### Paxos 算法和 Raft 算法
 
@@ -128,11 +131,11 @@ BASE 理论是对 CAP 中一致性和可用性权衡的结果，其来源于对�
 
 ### 分布式事务
 
-**分布式事务就是指事务的参与者、支持事务的服务器、资源服务器以及事务管理器分别位于不同的分布式系统的不同节点之上。**
+分布式事务就是指事务的参与者、支持事务的服务器、资源服务器以及事务管理器分别位于不同的分布式系统的不同节点之上。
 
 简单的说，就是一次大的操作由不同的小操作组成，这些小的操作分布在不同的服务器上，且属于不同的应用，分布式事务需要保证这些小操作要么全部成功，要么全部失败。本质上来说，分布式事务就是为了保证不同数据库的数据一致性。
 
-关于 分布式事务 的详细解读请看：**[《分布式事务》](docs/distributed/分布式事务.md)**
+关于 分布式事务 的详细解读请看：[**《分布式事务》**](docs/distributed/分布式事务.md)
 
 ### 分布式系统架构（概念、设计策略）
 
