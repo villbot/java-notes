@@ -96,10 +96,10 @@ Elaticsearch简称为ES,是一个开源的可扩展的分布式的**全文检索
 ### Tomcat
 
 * **[从入门到进阶：彻底掌握Apache Tomcat](docs/webContainer/Apache%20Tomcat.md)** 
-- **[灵魂拷问：Tomcat的类加载器是怎么打破了双亲委派机制](docs/webContainer/Tomcat的类加载器.md)** 
-- **[灵魂拷问：Tomcat是怎样支持HTTPS](docs/webContainer/Tomcat是怎样支持HTTPS.md)** 
-- **[灵魂拷问：Tomcat如何进行性能优化](docs/webContainer/Tomcat性能优化.md)** 
-- **[【进阶】Tomcat源码剖析](docs/webContainer/Tomcat源码剖析.md)** 
+* **[灵魂拷问：Tomcat的类加载器是怎么打破了双亲委派机制](docs/webContainer/Tomcat的类加载器.md)** 
+* **[灵魂拷问：Tomcat是怎样支持HTTPS](docs/webContainer/Tomcat是怎样支持HTTPS.md)** 
+* **[灵魂拷问：Tomcat如何进行性能优化](docs/webContainer/Tomcat性能优化.md)** 
+* **[【进阶】Tomcat源码剖析](docs/webContainer/Tomcat源码剖析.md)** 
 
 ## 分布式
 
