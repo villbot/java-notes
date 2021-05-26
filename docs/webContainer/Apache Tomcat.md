@@ -49,6 +49,7 @@ Jasper 模块提供 JSP 引 擎，Naming 提供JNDI 服务，Juli 提供日志�
 根据上图Tomcat模块分层图很直观能看到coyote 和Catalina是比较关键组件，那么下面我们具体来分析这个几个组件之间的关系
 
 ### 连接器组件（Coyote）
+
 顾名思义，连接器组件的职责就是服务器建立连接，发送请求并接受响应
 
 ![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_03_22/396A7420-42BC-43A8-B6B8-B7D331F811C8.png)
@@ -97,13 +98,12 @@ Tomcat是一个由多个可配置（conf/server.xml）组件组成的web容器�
 	是server内部的组件，一个server包含多个service，将若干个connector组件绑定到一个container。
 * container：
 	负责处理用户Servlert请求，并返回对象给web用户的模块
-	
 #### 那么在container中其他的组件又负责什么职责呢？
 * Engine：
 	表示整个Catalina的Servlet引擎，用来管理多个虚拟站点，一个Service最多只能有一个Engine， 但是一个引擎可包含多个Host 
 * Host：
 	代表一个虚拟主机，或者说一个站点，可以给Tomcat配置多个虚拟主机地址，而一个虚拟主机下 
-可包含多个Context
+	可包含多个Context
 * Context：
 	表示一个Web应用程序， 一个Web应用可包含多个Wrapper 
 * Wrapper

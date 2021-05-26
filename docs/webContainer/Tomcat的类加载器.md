@@ -3,6 +3,7 @@ Tomcat类加载器机制不得不提到Jvm的类加载机制，因为Tomcat类�
 那么Tomcat类加载机制是什么样子的呢？其实是相对于Jvm类加载器机制做了一些改变，没有严格遵从双亲委派机制，也可以说是打破了双亲委派机制。
 
 ## 为什么说Tomcat类加载机制是打破了双亲委派机制
+
 假设Tomcat下webapps里部署了两个应用
 /tomcat/webapps/demo-1.jar	
 /tomcat/webapps/demo-2.jar	
