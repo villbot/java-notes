@@ -32,13 +32,9 @@
  1. **[JVM的类加载机制和双亲委派机制](docs/jvm/JVM的类加载机制和双亲委派机制.md)**
  2. **[JVM优化](docs/jvm/JVM优化.md)**
 
-
-
 # 网络
 
 1. **[十分钟搞定HTTP、HTTPS协议](docs/network/HTTP和HTTPS的关系.md)**
-
-
 
 # 数据结构与算法
 
@@ -58,7 +54,7 @@
 
 ## 算法
 
-* **常见算法总结：[递归](docs/algorithm/递归.md)、[递归](docs/algorithm/递归.md)、[二分查找法](docs/algorithm/二分查找法.md)**
+* **常见算法总结：[递归](docs/algorithm/递归.md)、[二分查找法](docs/algorithm/二分查找法.md)**
 
 * **经典题解：[斐波那契数列](docs/algorithm/solve/斐波那契数列.md)、[有序数组找出只出现一次的元素](docs/algorithm/solve/有序数组找出只出现一次的元素.md)**
 
