@@ -32,6 +32,12 @@
  1. **[JVM的类加载机制和双亲委派机制](docs/java/jvm/JVM的类加载机制和双亲委派机制.md)**
  2. **[JVM优化](docs/java/jvm/JVM优化.md)**
 
+## 关键源码
+
+ * **[Java基础之HashMap源码剖析](docs/java/basic/hashmap.md) **
+ * **[Java基础之String源码剖析](docs/java/basic/string.md) **
+
+
 # 网络
 
 1. **[十分钟搞定HTTP、HTTPS协议](docs/network/HTTP和HTTPS的关系.md)**
