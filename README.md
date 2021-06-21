@@ -80,7 +80,7 @@
 
 常见的缓存分为客户端缓存（页面缓存、浏览器缓存、app缓存）、网络缓存（web代理缓存、边缘缓存）、服务端缓存（数据库级缓存、平台级缓存、应用级缓存）三种
 
-关于 **缓存** 的详细解读请看： **[《缓存的分类》](docs/storage/cache/缓存的分类.md) ** 、 **[《缓存优势、代价》](docs/storage/cache/缓存优势、代价.md)**、 **[《缓存的读写模式 》](docs/storage/cache/缓存的读写模式.md)**、 **[《缓存架构设计思路》](docs/storage/cache/缓存架构设计思路.md)** 
+关于 **缓存** 的详细解读请看： **[《缓存的分类》](docs/storage/cache/缓存的分类.md) ** 、 **[《缓存优势及代价》](docs/storage/cache/缓存优势及代价.md)**、 **[《缓存的读写模式 》](docs/storage/cache/缓存的读写模式.md)**、 **[《缓存架构设计思路》](docs/storage/cache/缓存架构设计思路.md)** 
 
 ### Redis
 
