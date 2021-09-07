@@ -37,7 +37,7 @@ Java Virtual Machine（JVM）即Java虚拟机，JVM是一种用于计算设备�
 
 ### 概念
 
-*  **[初识 Java Virtual Machine（JVM）](_docs/java/jvm-concept.md)** 
+*  **[初识 Java Virtual Machine（JVM）](docs/java/jvm/jvm-concept.md)** 
 
 ### 内存管理
 
