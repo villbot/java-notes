@@ -31,13 +31,13 @@
 
 ## Java Virtual Machine（必须掌握 ✅）
 
-Java Virtual Machine（JVM）即Java虚拟机，JVM是一种用于计算设备的规范，它是一个虚构出来的计算
-机，是通过在实际的计算机上仿真模拟各种计算机功能来实现的。
+Java Virtual Machine（JVM）即Java虚拟机，JVM是一种用于计算设备的规范，它是一个虚构出来的计算机，是通过在实际的计算机上仿真模拟各种计算机功能来实现的。
+
+引入Java语言虚拟机后，Java语言在不同平台上运行时不需要重新编译。Java语言使用Java虚拟机屏蔽了与具体平台相关的信息，使得Java语言编译程序只需生成在Java虚拟机上运行的目标代码（字节码），就可以在多种平台上不加修改地运行。
 
 ### 概念
 
-  1. **[JVM的类加载机制和双亲委派机制](docs/java/jvm/JVM的类加载机制和双亲委派机制.md)**
-  2. **[JVM优化](docs/java/jvm/JVM优化.md)**
+*  **[初识 Java Virtual Machine（JVM）](_docs/java/jvm-concept.md)** 
 
 ### 内存管理
 
