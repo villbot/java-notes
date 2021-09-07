@@ -1,6 +1,6 @@
 推荐👍 [在线阅读，阅读效果更好](http://elgchat.com)
 
-![](/Users/jianghai/Documents/builder.nosync/github/elgchat/assets/1B61E8B8-8862-4EC7-AA02-BDEEA16F666D.png)
+![](https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_09_07/1B61E8B8-8862-4EC7-AA02-BDEEA16F666D.png)
 
 # 关于ElgChat
 
