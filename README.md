@@ -27,9 +27,9 @@
 
 
 
-# Java 基础（核心）
+# Java 基础（核心 🔥）
 
-## Java Virtual Machine（必须掌握✅）
+## Java Virtual Machine（必须掌握 ✅）
 
 Java Virtual Machine（JVM）即Java虚拟机，JVM是一种用于计算设备的规范，它是一个虚构出来的计算
 机，是通过在实际的计算机上仿真模拟各种计算机功能来实现的。
