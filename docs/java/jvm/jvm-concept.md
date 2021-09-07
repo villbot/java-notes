@@ -20,7 +20,7 @@
 
 Java 是一门抽象程度特别高的语言，提供了自动内存管理等一系列的特性。这些特性直接在操作系统上实现是不太 可能的，所以就需要 JVM 进行一番转换。
 
-<img src="https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_09_07/image-20210907151616250.png" alt="image-20210907151616250" style="zoom:50%;" />
+<img src="https://elgchat-oss.oss-accelerate.aliyuncs.com/elgchat/2021_09_07/image-20210907162102045.png" alt="image-20210907162102045" style="zoom:50%;" />
 
 从上图可以看到，有了 JVM 这个抽象层之后，Java 就可以实现跨平台了。JVM 只需要保证能够正确执行 .class 文 件，就可以运行在诸如 Linux、Windows、MacOS 等平台上了。
 
