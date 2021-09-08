@@ -41,7 +41,7 @@ Java Virtual Machine（JVM）即Java虚拟机，JVM是一种用于计算设备�
 
 ### 内存管理
 
-(完善ing.....)
+*  **[Java Virtual Machine 内存管理](docs/java/jvm/jvm-memory.md)** 
 
 ### JVM加载机制详解
 
